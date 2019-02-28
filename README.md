@@ -25,33 +25,33 @@ These funds are locked into two scripts. Refundable and Seizable collateral scri
 The Refundable script takes the following form:
 
 ```
+OP_IF
+    [HASHOP] <digest> OP_EQUALVERIFY OP_DUP OP_HASH160 <borrower pubkey hash> OP_EQUALVERIFY OP_CHECKSIG
+OP_ELSE
     OP_IF
-        [HASHOP] <digest> OP_EQUALVERIFY OP_DUP OP_HASH160 <borrower pubkey hash> OP_EQUALVERIFY OP_CHECKSIG
+        <loan expiration num> [TIMEOUTOP] OP_DROP OP_2 <borrower pubkey> <lender pubkey> OP_2 OP_CHECKMULTISIG
     OP_ELSE
-        OP_IF
-            <loan expiration num> [TIMEOUTOP] OP_DROP OP_2 <borrower pubkey> <lender pubkey> OP_2 OP_CHECKMULTISIG
-        OP_ELSE
-            <liquidation expiration num> [TIMEOUTOP] OP_DROP OP_DUP OP_HASH160 <borrower pubkey hash> OP_EQUALVERIFY OP_CHECKSIG
-        OP_ENDIF
+        <liquidation expiration num> [TIMEOUTOP] OP_DROP OP_DUP OP_HASH160 <borrower pubkey hash> OP_EQUALVERIFY OP_CHECKSIG
     OP_ENDIF
+OP_ENDIF
 ```
 
 The Seizable script takes the following form
 
 ```
+OP_IF
+    [HASHOP] <digest> OP_EQUALVERIFY OP_DUP OP_HASH160 <borrower pubkey hash> OP_EQUALVERIFY OP_CHECKSIG
+OP_ELSE
     OP_IF
-        [HASHOP] <digest> OP_EQUALVERIFY OP_DUP OP_HASH160 <borrower pubkey hash> OP_EQUALVERIFY OP_CHECKSIG
+        <loan expiration num> [TIMEOUTOP] OP_DROP OP_2 <borrower pubkey> <lender pubkey> OP_2 OP_CHECKMULTISIG
     OP_ELSE
         OP_IF
-            <loan expiration num> [TIMEOUTOP] OP_DROP OP_2 <borrower pubkey> <lender pubkey> OP_2 OP_CHECKMULTISIG
+            <liquidation expiration num> [TIMEOUTOP] OP_DROP [HASHOP] <digest> OP_DUP OP_HASH160 <lender pubkey hash> OP_EQUALVERIFY OP_CHECKSIG
         OP_ELSE
-            OP_IF
-                <liquidation expiration num> [TIMEOUTOP] OP_DROP [HASHOP] <digest> OP_DUP OP_HASH160 <lender pubkey hash> OP_EQUALVERIFY OP_CHECKSIG
-            OP_ELSE
-                <seizure expiration num> [TIMEOUTOP] OP_DROP OP_DUP OP_HASH160 <borrower pubkey hash> OP_EQUALVERIFY OP_CHECKSIG
-            OP_ENDIF
+            <seizure expiration num> [TIMEOUTOP] OP_DROP OP_DUP OP_HASH160 <borrower pubkey hash> OP_EQUALVERIFY OP_CHECKSIG
         OP_ENDIF
     OP_ENDIF
+OP_ENDIF
 ```
 
 [HASHOP] is either OP_SHA256 or OP_HASH160.
