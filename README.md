@@ -82,7 +82,7 @@ Bob is interested in a lower loan timeout to reduce the amount of time that his 
 
 # Motivation #
 
-In many different protocols, the revealing of secrets is used a settlement mechanism. Hashed Time-Locked Atomic Loan Collateral Contract transactions are a safe way of exchanging secrets to advance the state of a debt agreement, due to the ability to recover a percentage of collateral funds from an uncooperative counterparty. 
+In many different protocols, the revealing of secrets is used a settlement mechanism. Hashed Time-Locked Atomic Loan Collateral Contract transactions are a safe way of exchanging secrets to advance the state of a debt agreement, due to the ability to recover a percentage of collateral funds from an uncooperative counterparty, and ensure principal + interest + liquidation fee is paid with a cooperative party. 
 
 # Implementation #
 
