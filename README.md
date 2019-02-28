@@ -79,3 +79,11 @@ OP_ENDIF
   - Alice defaults on the loan and Alice or Bob opts out of collateral liquidation and Bob doesn't spend the Seizable Collateral funds, then Alice recovers the Refundable Collateral funds and recovers the Seizable Collateral funds.
 
 Bob is interested in a lower loan timeout to reduce the amount of time that his funds are kept in the contract in the event that Alice defaults.
+
+# Motivation #
+
+In many different protocols, the revealing of secrets is used a settlement mechanism. Hashed Time-Locked Atomic Loan Collateral Contract transactions are a safe way of exchanging secrets to advance the state of a debt agreement, due to the ability to recover a percentage of collateral funds from an uncooperative counterparty. 
+
+# Implementation #
+
+https://github.com/liquality/chainabstractionlayer/blob/7585c205407529b139d4df187b6a4a001d56fcb1/src/providers/bitcoin/BitcoinCollateralProvider.js
