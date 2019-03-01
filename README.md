@@ -16,9 +16,9 @@ This BIP describes a script for generalized debt agreement contract based on Has
 
 # Summary #
 
-A Hashed Time-Locked Atomic Loans Collateral Contract is a script that permits a designated party (the "borrower") to lock funds for a specified amount of time as collateral.
+A Hashed Time-Locked Atomic Loans Collateral Contract consists of two scripts that permit a designated party (the "borrower") to lock funds for a specified amount of time as collateral.
 
-The purpose of each this script, is it enables two parties (the "borrower" and the "lender") to create a debt agreement, where the collateral is locked in a P2SH, and can only be spent once the borrower repays the principal + interest in the debt agreement. In the case that the borrower does not repay, the borrower and lender can opt for liquidation of the collateral, which will involved atomically swapping the collateral for the loan currency. In the case that both parties don't opt for liquidation, then each party will be entitled to a percentage of the collateral, decided when the funds are locked in the P2SH.
+The purpose of each script, is it enables two parties (the "borrower" and the "lender") to create a debt agreement, where the collateral is locked in a P2SH, and can only be spent once the borrower repays the principal + interest in the debt agreement. In the case that the borrower does not repay, the borrower and lender can opt for liquidation of the collateral, which will involved atomically swapping the collateral for the loan currency. In the case that both parties don't opt for liquidation, then each party will be entitled to a percentage of the collateral, decided when the funds are locked in the P2SH.
 
 These funds are locked into two scripts. Refundable and Seizable collateral scripts. The funds sent to these scripts represent the percentage of collateral that each party is entitled to in the case that repayment fails, and the parties don't opt for liquidation.
 
